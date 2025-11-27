@@ -1,1 +1,4 @@
-// FURKANCAN SIHHATLER OLSUN
+
+//android platformda uygulama yap cihazın wifi durumunu açık kapalı pragmatik olarak okuyarak
+//kullanıcıya ekranda göstermelidir arayüzde bir adet buton olmalı ve b butona basıldığında wifi durumunu yeniden okunarak wifi açık veya kapalı diyecek bu birinci program iki tane kotlin atacam
+//diğerini
