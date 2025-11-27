@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">fys1</string>
+    <string name="wifi_durum_bekleniyor">Wi-Fi durumu okunuyor...</string>
+    <string name="wifi_durumu_yenile">Wi-Fi durumunu yenile</string>
 </resources>

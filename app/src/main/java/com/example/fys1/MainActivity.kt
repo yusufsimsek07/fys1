@@ -1,47 +1,38 @@
 package com.example.fys1
 
+import android.content.Context
+import android.net.wifi.WifiManager
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.fys1.ui.theme.Fys1Theme
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var txtWifi: TextView
+    private lateinit var btnOku: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Fys1Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        txtWifi = findViewById(R.id.txtWifi)
+        btnOku = findViewById(R.id.btnOku)
+
+        // Uygulama açıldığında mevcut Wi-Fi durumunu göster
+        wifiDurumunuGoster()
+
+        btnOku.setOnClickListener {
+            // Butona basıldığında Wi-Fi durumunu yeniden oku
+            wifiDurumunuGoster()
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun wifiDurumunuGoster() {
+        val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Fys1Theme {
-        Greeting("Android")
+        val durum = if (wifiManager.isWifiEnabled) "WiFi AÇIK" else "WiFi KAPALI"
+
+        txtWifi.text = durum
     }
 }
